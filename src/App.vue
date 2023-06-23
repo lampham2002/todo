@@ -42,6 +42,8 @@ const addTodo = () => {
 	category.value.push({ 
 			category: input_category.value
 	})
+	input_content.value = ''
+			input_category.value = null
 }
 
 const removeTodo = (todo) => {
