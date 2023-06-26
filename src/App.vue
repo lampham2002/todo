@@ -72,19 +72,19 @@ onMounted(() => {
 				<h4>Pick a category</h4>
 				<div class="options">
 
-<label>
-	<input type="radio" name="category" id="category1" value="a" v-model="input_category" />
-	<span class="bubble business"></span>
-	<div>Business</div>
-</label>
-
-<label>
-	<input type="radio" name="category" id="category2" value="b" v-model="input_category" />
-	<span class="bubble personal"></span>
-	<div>Personal</div>
-</label>
-
-</div>
+				<label>
+					<input type="radio" name="category" id="category1" value="a" v-model="input_category" />
+					<span class="bubble business"></span>
+					<div>Business</div>
+				</label>
+				
+				<label>
+					<input type="radio" name="category" id="category2" value="b" v-model="input_category" />
+					<span class="bubble personal"></span>
+					<div>Personal</div>
+				</label>
+				
+				</div>
 
 					<input type="submit" value="Add Todo"/>
 				
