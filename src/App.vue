@@ -27,38 +27,49 @@ watch(category,(newVal)=>{
 		},{
 			deep:true
 		})
-const addTodo = () => {
-	if (input_content.value.trim() === '' || input_category.value == null) {
-		return
-	}
+		const addTodo = () => {
+			if (input_content.value.trim() === ''  ) {
+				return
+			}
 
-	todos.value.push({
-		content: input_content.value,
-		category: input_category.value,
-		done: false,
-		editable: false,
-		createdAt: new Date().getTime()
-	})
-	category.value.push({ 
-			category: input_category.value
-	})
-	input_content.value = ''
-			input_category.value = null
-}
+			
+			const existedTodos = JSON.parse(localStorage.getItem("category"));
+			
+			if(existedTodos.find((e) => e.content === input_content.value.trim())) {
+				alert("đã tồn tại");
+				return;
+			}
 
+			todos.value.push({
+				content: input_content.value ,
+			    category: input_category.value,
+				done: false,
+				createdAt: new Date().getTime()
+				
+			})
+			category.value.push({ 
+			  content:input_content.value,
+			  category:input_category.value 
+			     	
+		})
+
+			input_content.value = ''  
+			input_category.value = null 
+		}
+  
 const removeTodo = (todo) => {
-	todos.value = todos.value.filter((t) => t !== todo)
+	todos.value = todos.value.filter((t) => t !== todo) 
 }
 
 onMounted(() => {
-	name.value = localStorage.getItem('name') || ''
-	todos.value = JSON.parse(localStorage.getItem('todos')) || []
-	category.value = JSON.parse(localStorage.getItem('category')) || []
-})
+	name.value = localStorage.getItem('name') || '' 
+	todos.value = JSON.parse(localStorage.getItem('todos')) || [] 
+	category.value = JSON.parse(localStorage.getItem('category')) || []  
+}) 
 
-
-</script>
-
+    
+</script> 
+ 
 <template>
 	<main class="app">
 		<section class="greeting">
@@ -72,19 +83,19 @@ onMounted(() => {
 				<h4>Pick a category</h4>
 				<div class="options">
 
-<label>
-	<input type="radio" name="category" id="category1" value="a" v-model="input_category" />
-	<span class="bubble business"></span>
-	<div>Business</div>
-</label>
+				<label>
+					<input type="radio" name="category" id="category1" value="a" v-model="input_category" />
+					<span class="bubble business"></span>
+					<div>Business</div>
+				</label>
 
-<label>
-	<input type="radio" name="category" id="category2" value="b" v-model="input_category" />
-	<span class="bubble personal"></span>
-	<div>Personal</div>
-</label>
+				<label>
+					<input type="radio" name="category" id="category2" value="b" v-model="input_category" />
+					<span class="bubble personal"></span>
+					<div>Personal</div>
+				</label>
 
-</div>
+				</div>
 
 					<input type="submit" value="Add Todo"/>
 				
@@ -109,7 +120,7 @@ onMounted(() => {
 						<button class="delete" @click="removeTodo(todo)">X</button>
 					</div>
 					</div>
-				</div>
+				</div>  
 		</section>
 	</main>
 </template>
